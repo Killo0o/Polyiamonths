@@ -1,12 +1,12 @@
-﻿<Window x:Class="WpfApplication1.MainWindow"
+﻿<Window x:Class="WpfApplication1.MainWindowLogic"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Polyiamonds" Height="640" Width="Auto" WindowState="Maximized">
-        
+    Title="Polyiamonds" Height="640" Width="Auto"
+        WindowState ="Maximized">
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="360"/>
@@ -17,8 +17,8 @@
 
                 <TextBlock x:Name="project_title" Margin="10,20,10,10" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" FontSize="16" Text="Bijections between graphs and tilings with Walkup structure" Height="50" ></TextBlock>
                 <TextBlock x:Name="polyiamonds" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" Height="37" Margin="10,10,0,0" TextWrapping="Wrap" Text="Polyiamonds:" VerticalAlignment="Top" Width="173"/>
-                <Border BorderBrush="Gainsboro" BorderThickness="2" Height="300" Width="300">
-                    <Grid x:Name="polyiamond_tiles" Height="300" Width="300" >
+                <Border BorderBrush="Gainsboro" BorderThickness="2" Height="200" Width="300">
+                    <Grid x:Name="polyiamond_tiles" Height="200" Width="300" xmlns:svg2xaml="clr-namespace:Svg2Xaml;assembly=Svg2Xaml">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -28,12 +28,48 @@
                         <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Image x:Name="tile_1" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
-                        <Image x:Name="tile_2" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
-                        <Image x:Name="tile_3" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
-                        <Image x:Name="tile_4" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
-                        <Image x:Name="tile_5" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
-                        <Image x:Name="tile_6" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Source=""/>
+                        <Button Tag ="1" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_1" Source="{svg2xaml:SvgImage tile_1.svg}"/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="2" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_2" Source=""/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="3" Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_3" Source=""/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="4" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_4" Source=""/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="5" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_5" Source=""/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                        <Button Tag="6" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" >
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Image x:Name="tile_6" Source=""/>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
                     </Grid>
                 </Border>
                 <Grid x:Name="buttons" Margin="0,0,0,0">
