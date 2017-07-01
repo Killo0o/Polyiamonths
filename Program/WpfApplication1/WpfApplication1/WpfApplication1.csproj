@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Svg2Xaml, Version=0.3.0.5, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Svg2Xaml.0.3.0.5\lib\net40\Svg2Xaml.dll</HintPath>
+    <Reference Include="Svg2Xaml, Version=0.3.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Svg2Xaml.0.3.0.4\lib\net40\Svg2Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
