@@ -69,6 +69,14 @@ namespace WpfApplication1
             drawingBoard.Children.RemoveRange(0, drawingBoard.Children.Count);
         }
 
+        private void CanvasUndo(object sender, RoutedEventArgs e)
+        {
+            if (drawingBoard.Children.Count > 0)
+            {
+                drawingBoard.Children.RemoveAt(drawingBoard.Children.Count - 1);
+            }
+        }
+
         // Don't mind this for now
         private DrawingImage GetImageToSpawn(int tileType)
         {
