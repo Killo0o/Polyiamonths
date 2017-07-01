@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Polyiamonds" Height="640" Width="Auto">
+        Title="Polyiamonds" Height="640" Width="Auto" WindowState="Maximized">
+        
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="360"/>
