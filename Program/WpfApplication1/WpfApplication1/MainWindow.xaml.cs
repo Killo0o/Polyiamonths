@@ -24,6 +24,7 @@ namespace WpfApplication1
     {
 
         private DrawingImage _selectedShape;
+        private string _selectedShapeNameToSpawn;
 
         public MainWindowLogic()
         {
@@ -39,6 +40,29 @@ namespace WpfApplication1
         {
             int tileType = int.Parse(((Button)sender).Tag.ToString());
             _selectedShape = GetImageToSpawn(tileType);
+            _selectedShapeNameToSpawn = GetImageToSpawn2(tileType);
+        }
+
+        private void canvasArea_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+            if (_selectedShapeNameToSpawn == null)
+            {
+                return;
+            }
+
+            Image bodyImage = new Image
+            {
+                Width = 100,
+                Height = 100,
+                Name = "test",
+                Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
+
+        };
+          
+            Canvas.SetLeft(bodyImage, e.GetPosition(drawingBoard).X - (drawingBoard.Width / 2.0));
+            Canvas.SetTop(bodyImage, e.GetPosition(drawingBoard).Y - (drawingBoard.Height / 2.0));
+            drawingBoard.Children.Add(bodyImage);
         }
 
         // Don't mind this for now
@@ -75,6 +99,39 @@ namespace WpfApplication1
             }
 
             return image;
+        }
+
+        private String GetImageToSpawn2(int tileType)
+        {
+            string result = null;
+            switch (tileType)
+            {
+                case 1:
+                    result = "tile_1.png";
+                    break;           
+                                     
+                case 2:              
+                    result = "tile_2.png";
+                    break;           
+                                     
+                case 3:              
+                    result = "tile_3.png";
+                    break;           
+                                              
+                case 4:              
+                    result = "tile_4.png";
+                    break;           
+                                     
+                case 5:              
+                    result = "tile_5.png";
+                    break;           
+                                     
+                case 6:              
+                    result = "tile_6.png";
+                    break;
+            }
+
+            return result;
         }
 
         private DrawingImage GetSVGFromResources(string fileName)
