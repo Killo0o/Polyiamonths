@@ -43,7 +43,7 @@ namespace WpfApplication1
             _selectedShapeNameToSpawn = GetImageToSpawn2(tileType);
         }
 
-        private void canvasArea_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void MouseClickOnCanvas(object sender, MouseButtonEventArgs e)
         {
 
             if (_selectedShapeNameToSpawn == null)
@@ -53,16 +53,20 @@ namespace WpfApplication1
 
             Image bodyImage = new Image
             {
-                Width = 100,
-                Height = 100,
+                Width = 200,
+                Height = 200,
                 Name = "test",
                 Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
-
-        };
+            };
           
             Canvas.SetLeft(bodyImage, e.GetPosition(drawingBoard).X - (drawingBoard.Width / 2.0));
             Canvas.SetTop(bodyImage, e.GetPosition(drawingBoard).Y - (drawingBoard.Height / 2.0));
             drawingBoard.Children.Add(bodyImage);
+        }
+
+        private void CanvasReset(object sender, RoutedEventArgs e)
+        {
+            drawingBoard.Children.RemoveRange(0, drawingBoard.Children.Count);
         }
 
         // Don't mind this for now
