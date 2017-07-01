@@ -22,8 +22,6 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindowLogic : Window
     {
-
-        private DrawingImage _selectedShape;
         private string _selectedShapeNameToSpawn;
         private object _movingObject;
         private double _firstXPos, _firstYPos;
@@ -45,8 +43,7 @@ namespace WpfApplication1
         private void SelectShape(object sender, RoutedEventArgs e)
         {
             int tileType = int.Parse(((Button)sender).Tag.ToString());
-            _selectedShape = GetImageToSpawn(tileType);
-            _selectedShapeNameToSpawn = GetImageToSpawn2(tileType);
+            _selectedShapeNameToSpawn = GetImageToSpawn(tileType);
         }
 
         private void MouseClickOnCanvas(object sender, MouseButtonEventArgs e)
@@ -67,6 +64,7 @@ namespace WpfApplication1
             bodyImage.PreviewMouseLeftButtonDown += this.CanvasObjectLeftClick;
             bodyImage.PreviewMouseMove += this.CanvasObjectMouseMove;
             bodyImage.PreviewMouseLeftButtonUp += this.PreviewCanvasObjectLeftButtonUp;
+            bodyImage.MouseRightButtonDown += this.CanvasObjectRightClick;
             
             Point mousePosition = Mouse.GetPosition(drawingBoard);
           
@@ -110,6 +108,12 @@ namespace WpfApplication1
             Canvas.SetZIndex(img, top + 1);
         }
 
+        private void CanvasObjectRightClick(object sender, MouseButtonEventArgs e)
+        {
+            Image img = sender as Image;
+            drawingBoard.Children.Remove(img);
+        }
+
         private void CanvasObjectMouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed && sender == _movingObject)
@@ -150,87 +154,58 @@ namespace WpfApplication1
             }
         }
 
-        // Don't mind this for now
-        private DrawingImage GetImageToSpawn(int tileType)
-        {
-            DrawingImage image = null;
-            string dir = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-
-            switch (tileType)
-            {
-                case 1:
-                    image = GetSVGFromResources(dir + @"\images\tile_1.svg");
-                    break;
-
-                case 2:
-                    image = GetSVGFromResources(dir + @"\images\tile_2.svg");
-                    break;
-
-                case 3:
-                    image = GetSVGFromResources(dir + @"\images\tile_3.svg");
-                    break;
-
-                case 4:
-                    image = GetSVGFromResources(dir + @"\images\tile_4.svg");
-                    break;
-
-                case 5:
-                    image = GetSVGFromResources(dir + @"\images\tile_5.svg");
-                    break;
-
-                case 6:
-                    image = GetSVGFromResources(dir + @"\images\tile_6.svg");
-                    break;
-            }
-
-            return image;
-        }
-
-        private String GetImageToSpawn2(int tileType)
+        private String GetImageToSpawn(int tileType)
         {
             string result = null;
             switch (tileType)
             {
                 case 1:
                     result = "tile_1.png";
-                    break;           
-                                     
-                case 2:              
+                    break;
+
+                case 2:
                     result = "tile_2.png";
-                    break;           
-                                     
-                case 3:              
+                    break;
+
+                case 3:
                     result = "tile_3.png";
-                    break;           
-                                              
-                case 4:              
+                    break;
+
+                case 4:
                     result = "tile_4.png";
-                    break;           
-                                     
-                case 5:              
+                    break;
+
+                case 5:
                     result = "tile_5.png";
-                    break;           
-                                     
-                case 6:              
+                    break;
+
+                case 6:
                     result = "tile_6.png";
+                    break;
+
+                case 7:
+                    result = "line_1.png";
+                    break;
+
+                case 8:
+                    result = "line_2.png";
+                    break;
+
+                case 9:
+                    result = "line_3.png";
+                    break;
+
+                case 10:
+                    result = "dot_white.png";
+                    break;
+
+                case 11:
+                    result = "dot_black.png";
                     break;
             }
 
             return result;
         }
 
-        private DrawingImage GetSVGFromResources(string fileName)
-        {
-            DrawingImage image = null;
-            using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
-            {
-                image = SvgReader.Load(stream);
-
-                // SvgReaderOptions options = new SvgReaderOptions(...);
-                // DrawingImage image = SvgReader.Load(stream, options);
-            }
-
-            return image;
-        }
     }
 }
