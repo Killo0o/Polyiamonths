@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         xmlns:svg2xaml="clr-namespace:Svg2Xaml;assembly=Svg2Xaml"
-    Title="Polyiamonds" Height="640" Width="Auto"
+    Title="Polyiamonds" Height="640" Width="881"
         WindowState ="Maximized">
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
@@ -97,6 +97,7 @@
         
         
        <Border Grid.Column="1" BorderBrush="Gainsboro" BorderThickness="2" Margin="10,10,10,10" >
+            <Image Source="images/triangular_grid_large.png"/>
         </Border>
                 
     </Grid>

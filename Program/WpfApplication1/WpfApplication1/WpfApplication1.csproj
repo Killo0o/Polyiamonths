@@ -117,6 +117,7 @@
     <Content Include="images\tile_5.svg" />
     <Resource Include="images\tile_6.png" />
     <Content Include="images\tile_6.svg" />
+    <Resource Include="images\triangular_grid_large.png" />
     <Content Include="images\triangular_grid_large.svg" />
   </ItemGroup>
   <ItemGroup />
