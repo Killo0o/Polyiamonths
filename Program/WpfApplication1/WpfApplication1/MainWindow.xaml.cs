@@ -57,14 +57,16 @@ namespace WpfApplication1
 
             Image bodyImage = new Image
             {
-                Width = 200,
-                Height = 200,
+                Width = 180,
+                Height = 180,
                 Name = "test",
                 Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
             };
+
+            Point mousePosition = Mouse.GetPosition(drawingBoard);
           
-            Canvas.SetLeft(bodyImage, e.GetPosition(drawingBoard).X - (drawingBoard.Width / 2.0));
-            Canvas.SetTop(bodyImage, e.GetPosition(drawingBoard).Y - (drawingBoard.Height / 2.0));
+            Canvas.SetLeft(bodyImage, mousePosition.X - bodyImage.Width/2);
+            Canvas.SetTop(bodyImage, mousePosition.Y - bodyImage.Height/2);
             drawingBoard.Children.Add(bodyImage);
         }
 
