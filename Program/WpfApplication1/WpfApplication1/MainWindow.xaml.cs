@@ -25,6 +25,8 @@ namespace WpfApplication1
 
         private DrawingImage _selectedShape;
         private string _selectedShapeNameToSpawn;
+        private object _movingObject;
+        private double _firstXPos, _firstYPos;
 
         public MainWindowLogic()
         {
@@ -49,8 +51,7 @@ namespace WpfApplication1
 
         private void MouseClickOnCanvas(object sender, MouseButtonEventArgs e)
         {
-
-            if (_selectedShapeNameToSpawn == null)
+            if (_selectedShapeNameToSpawn == null || _movingObject != null)
             {
                 return;
             }
@@ -59,15 +60,81 @@ namespace WpfApplication1
             {
                 Width = 140,
                 Height = 140,
-                Name = "svirki",
                 Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
             };
 
+            bodyImage.AllowDrop = true;
+            bodyImage.PreviewMouseLeftButtonDown += this.CanvasObjectLeftClick;
+            bodyImage.PreviewMouseMove += this.CanvasObjectMouseMove;
+            bodyImage.PreviewMouseLeftButtonUp += this.PreviewCanvasObjectLeftButtonUp;
+            
             Point mousePosition = Mouse.GetPosition(drawingBoard);
           
             Canvas.SetLeft(bodyImage, mousePosition.X - bodyImage.Width/2);
             Canvas.SetTop(bodyImage, mousePosition.Y - bodyImage.Height/2);
+
             drawingBoard.Children.Add(bodyImage);
+        }
+
+        private void CanvasObjectLeftClick(object sender, MouseButtonEventArgs e)
+        {
+            // In this event, we get the current mouse position on the control to use it in the MouseMove event.
+            Image img = sender as Image;
+            Canvas canvas = img.Parent as Canvas;
+
+            _firstXPos = e.GetPosition(img).X;
+            _firstYPos = e.GetPosition(img).Y;
+
+            _movingObject = sender;
+
+            // Put the image currently being dragged on top of the others
+            int top = Canvas.GetZIndex(img);
+            foreach (Image child in canvas.Children)
+                if (top < Canvas.GetZIndex(child))
+                    top = Canvas.GetZIndex(child);
+            Canvas.SetZIndex(img, top + 1);
+        }
+
+        private void PreviewCanvasObjectLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Image img = sender as Image;
+            Canvas canvas = img.Parent as Canvas;
+
+            _movingObject = null;
+
+            // Put the image currently being dragged on top of the others
+            int top = Canvas.GetZIndex(img);
+            foreach (Image child in canvas.Children)
+                if (top > Canvas.GetZIndex(child))
+                    top = Canvas.GetZIndex(child);
+            Canvas.SetZIndex(img, top + 1);
+        }
+
+        private void CanvasObjectMouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed && sender == _movingObject)
+            {
+                Image img = sender as Image;
+                Canvas canvas = img.Parent as Canvas;
+
+                double newLeft = e.GetPosition(canvas).X - _firstXPos - canvas.Margin.Left;
+                // newLeft inside canvas right-border?
+                if (newLeft > canvas.Margin.Left + canvas.ActualWidth - img.ActualWidth)
+                    newLeft = canvas.Margin.Left + canvas.ActualWidth - img.ActualWidth;
+                // newLeft inside canvas left-border?
+                else if (newLeft < canvas.Margin.Left)
+                    newLeft = canvas.Margin.Left;
+                img.SetValue(Canvas.LeftProperty, newLeft);
+
+                double newTop = e.GetPosition(canvas).Y - _firstYPos - canvas.Margin.Top;
+                // newTop inside canvas bottom-border?
+                if (newTop > canvas.Margin.Top + canvas.ActualHeight - img.ActualHeight)
+                    newTop = canvas.Margin.Top + canvas.ActualHeight - img.ActualHeight;
+                // newTop inside canvas top-border?
+                else if (newTop < canvas.Margin.Top)
+                    newTop = canvas.Margin.Top;
+                img.SetValue(Canvas.TopProperty, newTop);
+            }
         }
 
         private void CanvasReset(object sender, RoutedEventArgs e)
