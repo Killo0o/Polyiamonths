@@ -57,9 +57,9 @@ namespace WpfApplication1
 
             Image bodyImage = new Image
             {
-                Width = 200,
-                Height = 200,
-                Name = "test",
+                Width = 140,
+                Height = 140,
+                Name = "svirki",
                 Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
             };
           
