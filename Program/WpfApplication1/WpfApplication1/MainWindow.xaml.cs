@@ -29,6 +29,10 @@ namespace WpfApplication1
         public MainWindowLogic()
         {
             InitializeComponent();
+            ImageBrush ib = new ImageBrush();
+            string dir = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+            ib.ImageSource = new BitmapImage(new Uri(dir + @"\images\triangular_grid_large.png"));
+            drawingBoard.Background = ib;
         }
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
