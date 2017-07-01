@@ -105,11 +105,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="images\tile_1.png" />
     <Content Include="images\tile_1.svg" />
+    <Resource Include="images\tile_2.png" />
     <Content Include="images\tile_2.svg" />
+    <Resource Include="images\tile_3.png" />
     <Content Include="images\tile_3.svg" />
+    <Resource Include="images\tile_4.png" />
     <Content Include="images\tile_4.svg" />
+    <Resource Include="images\tile_5.png" />
     <Content Include="images\tile_5.svg" />
+    <Resource Include="images\tile_6.png" />
     <Content Include="images\tile_6.svg" />
     <Content Include="images\triangular_grid_large.svg" />
   </ItemGroup>
