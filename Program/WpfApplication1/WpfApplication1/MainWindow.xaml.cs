@@ -55,8 +55,6 @@ namespace WpfApplication1
 
             Image bodyImage = new Image
             {
-                Width = 140,
-                Height = 140,
                 Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
             };
 
@@ -68,8 +66,8 @@ namespace WpfApplication1
             
             Point mousePosition = Mouse.GetPosition(drawingBoard);
           
-            Canvas.SetLeft(bodyImage, mousePosition.X - bodyImage.Width/2);
-            Canvas.SetTop(bodyImage, mousePosition.Y - bodyImage.Height/2);
+            Canvas.SetLeft(bodyImage, mousePosition.X-bodyImage.Width/2);
+            Canvas.SetTop(bodyImage, mousePosition.Y-bodyImage.Height/2) ;
 
             drawingBoard.Children.Add(bodyImage);
         }
@@ -160,27 +158,27 @@ namespace WpfApplication1
             switch (tileType)
             {
                 case 1:
-                    result = "tile_1.png";
+                    result = "tile_slim_1.png";
                     break;
 
                 case 2:
-                    result = "tile_2.png";
+                    result = "tile_slim_2.png";
                     break;
 
                 case 3:
-                    result = "tile_3.png";
+                    result = "tile_slim_3.png";
                     break;
 
                 case 4:
-                    result = "tile_4.png";
+                    result = "tile_slim_4.png";
                     break;
 
                 case 5:
-                    result = "tile_5.png";
+                    result = "tile_slim_5.png";
                     break;
 
                 case 6:
-                    result = "tile_6.png";
+                    result = "tile_slim_6.png";
                     break;
 
                 case 7:

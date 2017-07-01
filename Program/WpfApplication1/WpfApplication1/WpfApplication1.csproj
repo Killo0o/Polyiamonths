@@ -112,6 +112,11 @@
     <Resource Include="images\line_2.png" />
     <Resource Include="images\line_3.png" />
     <Resource Include="images\grey.png" />
+    <Resource Include="images\dot_black_logo.png" />
+    <Resource Include="images\dot_white_logo.png" />
+    <Resource Include="images\line_1_logo.png" />
+    <Resource Include="images\line_2_logo.png" />
+    <Resource Include="images\line_3_logo.png" />
     <Content Include="images\tile_1.svg" />
     <Resource Include="images\tile_2.png" />
     <Content Include="images\tile_2.svg" />
@@ -124,6 +129,12 @@
     <Resource Include="images\tile_6.png" />
     <Content Include="images\tile_6.svg" />
     <Resource Include="images\triangular_grid_large.png" />
+    <Resource Include="images\tile_slim_1.png" />
+    <Resource Include="images\tile_slim_2.png" />
+    <Resource Include="images\tile_slim_3.png" />
+    <Resource Include="images\tile_slim_4.png" />
+    <Resource Include="images\tile_slim_5.png" />
+    <Resource Include="images\tile_slim_6.png" />
     <Content Include="images\triangular_grid_large.svg" />
   </ItemGroup>
   <ItemGroup />

@@ -105,7 +105,7 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
-                                        <Image x:Name="line_1" Source="images/line_1.png" />
+                                        <Image x:Name="line_1" Source="images/line_1_logo.png" />
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -114,7 +114,7 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
-                                        <Image x:Name="line_2" Source="images/line_2.png"/>
+                                        <Image x:Name="line_2" Source="images/line_2_logo.png"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -123,7 +123,7 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
-                                        <Image x:Name="line_3" Source="images/line_3.png"/>
+                                        <Image x:Name="line_3" Source="images/line_3_logo.png"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -132,7 +132,7 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
-                                        <Image x:Name="dot_white" Source="images/dot_white.png"/>
+                                        <Image x:Name="dot_white" Source="images/dot_white_logo.png"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
@@ -141,7 +141,7 @@
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
-                                        <Image x:Name="dot_black" Source="images/dot_black.png"/>
+                                        <Image x:Name="dot_black" Source="images/dot_black_logo.png"/>
                                     </Border>
                                 </ControlTemplate>
                             </Button.Template>
