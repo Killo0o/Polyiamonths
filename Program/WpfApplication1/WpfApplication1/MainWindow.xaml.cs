@@ -153,7 +153,7 @@ namespace WpfApplication1
         {
             if (drawingBoard.Children.Count > 0)
             {
-                drawingBoard.Children.RemoveAt(drawingBoard.Children.Count - 1);
+                drawingBoard.Children.RemoveAt(drawingBoard.Children.Count - 2);
             }
         }
 
