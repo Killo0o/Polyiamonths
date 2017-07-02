@@ -53,9 +53,10 @@ namespace WpfApplication1
                 return;
             }
 
+            string dir = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
             Image bodyImage = new Image
             {
-                Source = new BitmapImage(new Uri("WpfApplication1;component/images/"+ _selectedShapeNameToSpawn, UriKind.Relative))
+                Source = new BitmapImage(new Uri(dir + @"\images\"+ _selectedShapeNameToSpawn))
             };
 
             bodyImage.AllowDrop = true;
@@ -63,11 +64,15 @@ namespace WpfApplication1
             bodyImage.PreviewMouseMove += this.CanvasObjectMouseMove;
             bodyImage.PreviewMouseLeftButtonUp += this.PreviewCanvasObjectLeftButtonUp;
             bodyImage.MouseRightButtonDown += this.CanvasObjectRightClick;
-            
+
             Point mousePosition = Mouse.GetPosition(drawingBoard);
-          
-            Canvas.SetLeft(bodyImage, mousePosition.X-bodyImage.Width/2);
-            Canvas.SetTop(bodyImage, mousePosition.Y-bodyImage.Height/2) ;
+            double xTest = (mousePosition.X - bodyImage.Source.Width / 2);
+            double yTest = (mousePosition.Y - bodyImage.Source.Height / 2);
+
+            double XRound = Math.Round(xTest / 23.42);
+            double YRound = Math.Round(yTest / 20.28);
+            Canvas.SetLeft(bodyImage, 23.42 * XRound);
+            Canvas.SetTop(bodyImage, 20.28 * YRound);
 
             drawingBoard.Children.Add(bodyImage);
         }
@@ -152,7 +157,25 @@ namespace WpfApplication1
             }
         }
 
-        private String GetImageToSpawn(int tileType)
+        private void CanvasPrint(object sender, RoutedEventArgs e)
+        {
+            PrintDialog prnt = new PrintDialog();
+            if (prnt.ShowDialog() == true)
+            {
+                Size pageSize = new Size(prnt.PrintableAreaWidth, prnt.PrintableAreaHeight);
+                drawingBoard.Measure(pageSize);
+                drawingBoard.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
+
+                if (prnt.ShowDialog() == true)
+                {
+                    prnt.PrintVisual(drawingBoard, "Printing Canvas");
+                }
+            }
+            this.Close();
+        }
+
+
+        private string GetImageToSpawn(int tileType)
         {
             string result = null;
             switch (tileType)
