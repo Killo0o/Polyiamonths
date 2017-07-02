@@ -146,7 +146,7 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
-                        <Button Tag="6" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1" Click="SelectShape">
+                        <Button Tag="empty" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Grid.RowSpan="1">
                             <Button.Template>
                                 <ControlTemplate>
                                     <Border BorderBrush="Gainsboro" BorderThickness="2">
@@ -159,11 +159,13 @@
                 </Border>
 
                 <Grid x:Name="buttons" Margin="0,0,0,0">
+                    <!--
                     <TextBlock Text="Zoom in/out:" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Margin="0,10,0,0"/>
-                    <Slider x:Name="zoom_in_out" Width="250" Height="20" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
-                    <Button x:Name="undo" Width="90" Height=" 30" HorizontalAlignment="Center" Margin="10,70,10,10" Content="Undo" Click="CanvasUndo" />
-                    <Button x:Name="reset" Width="90" Height=" 30" HorizontalAlignment="Right" Margin="10,70,10,10" Content="Clear board" Click="CanvasReset"  />
-                    <Button x:Name="print" Width="90" Height="30" HorizontalAlignment="Left" Margin="10,70,10,10" Content="Print Canvas" Click="CanvasPrint"/>
+                    Slider x:Name="zoom_in_out" Width="250" Height="20" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+                    -->
+                    <Button x:Name="undo" Width="90" Height=" 30" HorizontalAlignment="Center" Margin="10,20,10,10" Content="Undo" Click="CanvasUndo" />
+                    <Button x:Name="reset" Width="90" Height=" 30" HorizontalAlignment="Right" Margin="10,20,10,10" Content="Clear board" Click="CanvasReset"  />
+                    <Button x:Name="print" Width="90" Height="30" HorizontalAlignment="Left" Margin="10,20,10,10" Content="Print to PDF" Click="CanvasPrint"/>
                 </Grid>
             </StackPanel>
        </Border>
