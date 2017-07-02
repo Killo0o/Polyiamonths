@@ -162,14 +162,12 @@ namespace WpfApplication1
             PrintDialog prnt = new PrintDialog();
             if (prnt.ShowDialog() == true)
             {
-                Size pageSize = new Size(850,800);
-                drawingBoard.Measure(pageSize);
-                drawingBoard.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
-
-                if (prnt.ShowDialog() == true)
-                {
+                //Size pageSize = new Size(850, 800);
+                //drawingBoard.Measure(pageSize);
+                //drawingBoard.Arrange(new Rect(0, 0, pageSize.Width, pageSize.Height));
+                //if (prnt.ShowDialog() == true)
                     prnt.PrintVisual(drawingBoard, "Printing Canvas");
-                }
+                
             }
         }
 
