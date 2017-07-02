@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
         xmlns:svg2xaml="clr-namespace:Svg2Xaml;assembly=Svg2Xaml"
-    Title="Polyiamonds" Height="852" Width="881"
+    Title="Polyiamonds" Height="855.333" Width="1264.333"
         WindowState ="Maximized">
     <Grid x:Name="main">
         <Grid.ColumnDefinitions>
