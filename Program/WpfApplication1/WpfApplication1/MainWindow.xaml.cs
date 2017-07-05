@@ -83,8 +83,8 @@ namespace WpfApplication1
             Image img = sender as Image;
             Canvas canvas = img.Parent as Canvas;
 
-            _firstXPos = e.GetPosition(img).X;
-            _firstYPos = e.GetPosition(img).Y;
+            _firstXPos = 23.42*Math.Round(e.GetPosition(img).X/23.42);
+            _firstYPos = 20.28*Math.Round(e.GetPosition(img).Y/20.28);
 
             _movingObject = sender;
 

@@ -163,7 +163,7 @@
                     <TextBlock Text="Zoom in/out:" HorizontalAlignment="Center" Height="20" VerticalAlignment="Top" Margin="0,10,0,0"/>
                     Slider x:Name="zoom_in_out" Width="250" Height="20" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Center"/>
                     -->
-                    <Button x:Name="undo" Width="90" Height=" 30" HorizontalAlignment="Center" Margin="10,20,10,10" Content="Undo" Click="CanvasUndo" />
+                    <Button x:Name="undo" Width="90" Height=" 30" HorizontalAlignment="Center" Margin="10,20,10,10" Content="Remove last tile" Click="CanvasUndo" />
                     <Button x:Name="reset" Width="90" Height=" 30" HorizontalAlignment="Right" Margin="10,20,10,10" Content="Clear board" Click="CanvasReset"  />
                     <Button x:Name="print" Width="90" Height="30" HorizontalAlignment="Left" Margin="10,20,10,10" Content="Print to PDF" Click="CanvasPrint"/>
                 </Grid>
