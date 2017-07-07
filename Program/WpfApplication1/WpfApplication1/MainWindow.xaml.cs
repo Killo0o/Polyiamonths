@@ -71,8 +71,10 @@ namespace WpfApplication1
 
             double XRound = Math.Round(xTest / 22.47);
             double YRound = Math.Round(yTest / 19.47);
-            if (bodyImage.Source.)
-            Canvas.SetLeft(bodyImage, 22.47* XRound-2+((YRound+1)%2)*11.235);
+            if (result=="tile_slim_1.png"||result=="tile_slim_4.png")
+                Canvas.SetLeft(bodyImage, 22.47* XRound-2+((YRound+1)%2)*11.235);
+            else
+                Canvas.SetLeft(bodyImage, 22.47 * XRound - 2 + ((YRound) % 2) * 11.235);
             Canvas.SetTop(bodyImage, 19.47 * YRound-2);
 
             drawingBoard.Children.Add(bodyImage);
@@ -172,14 +174,13 @@ namespace WpfApplication1
         }
 
 
+        string result = null;
         private string GetImageToSpawn(int tileType)
         {
-            string result = null;
             switch (tileType)
             {
                 case 1:
                     result = "tile_slim_1.png";
-                    
                     break;
 
                 case 2:
