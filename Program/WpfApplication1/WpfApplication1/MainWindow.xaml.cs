@@ -69,10 +69,11 @@ namespace WpfApplication1
             double xTest = (mousePosition.X - bodyImage.Source.Width / 2);
             double yTest = (mousePosition.Y - bodyImage.Source.Height / 2);
 
-            double XRound = Math.Round(xTest / 23.42);
-            double YRound = Math.Round(yTest / 20.28);
-            Canvas.SetLeft(bodyImage, 23.42 * XRound);
-            Canvas.SetTop(bodyImage, 20.28 * YRound);
+            double XRound = Math.Round(xTest / 22.47);
+            double YRound = Math.Round(yTest / 19.47);
+            if (bodyImage.Source.)
+            Canvas.SetLeft(bodyImage, 22.47* XRound-2+((YRound+1)%2)*11.235);
+            Canvas.SetTop(bodyImage, 19.47 * YRound-2);
 
             drawingBoard.Children.Add(bodyImage);
         }
@@ -83,8 +84,8 @@ namespace WpfApplication1
             Image img = sender as Image;
             Canvas canvas = img.Parent as Canvas;
 
-            _firstXPos = 23.42*Math.Round(e.GetPosition(img).X/23.42);
-            _firstYPos = 20.28*Math.Round(e.GetPosition(img).Y/20.28);
+            _firstXPos = e.GetPosition(img).X;
+            _firstYPos = e.GetPosition(img).Y;
 
             _movingObject = sender;
 
@@ -132,7 +133,6 @@ namespace WpfApplication1
                 else if (newLeft < canvas.Margin.Left)
                     newLeft = canvas.Margin.Left;
                 img.SetValue(Canvas.LeftProperty, newLeft);
-
                 double newTop = e.GetPosition(canvas).Y - _firstYPos - canvas.Margin.Top;
                 // newTop inside canvas bottom-border?
                 if (newTop > canvas.Margin.Top + canvas.ActualHeight - img.ActualHeight)
@@ -179,6 +179,7 @@ namespace WpfApplication1
             {
                 case 1:
                     result = "tile_slim_1.png";
+                    
                     break;
 
                 case 2:
