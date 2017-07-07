@@ -108,6 +108,18 @@ namespace WpfApplication1
             Image img = sender as Image;
             Canvas canvas = img.Parent as Canvas;
 
+            Point mousePosition = Mouse.GetPosition(drawingBoard);
+            double xTest = (mousePosition.X - img.Source.Width / 2);
+            double yTest = (mousePosition.Y - img.Source.Height / 2);
+
+            double XRound = Math.Round(xTest / 22.47);
+            double YRound = Math.Round(yTest / 19.47);
+            if (result == "tile_slim_1.png" || result == "tile_slim_4.png" || result == "line_2.png")
+                Canvas.SetLeft(img, 22.47 * XRound - 2 + ((YRound + 1) % 2) * 11.235);
+            else
+                Canvas.SetLeft(img, 22.47 * XRound - 2 + ((YRound) % 2) * 11.235);
+            Canvas.SetTop(img, 19.47 * YRound - 2);
+           
             _movingObject = null;
 
             // Put the image currently being dragged on top of the others
