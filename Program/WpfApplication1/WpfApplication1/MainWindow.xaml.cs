@@ -71,7 +71,7 @@ namespace WpfApplication1
 
             double XRound = Math.Round(xTest / 22.47);
             double YRound = Math.Round(yTest / 19.47);
-            if (result=="tile_slim_1.png"||result=="tile_slim_4.png")
+            if (result=="tile_slim_1.png"||result=="tile_slim_4.png"||result=="line_2.png")
                 Canvas.SetLeft(bodyImage, 22.47* XRound-2+((YRound+1)%2)*11.235);
             else
                 Canvas.SetLeft(bodyImage, 22.47 * XRound - 2 + ((YRound) % 2) * 11.235);
@@ -91,16 +91,20 @@ namespace WpfApplication1
 
             _movingObject = sender;
 
+            
             // Put the image currently being dragged on top of the others
             int top = Canvas.GetZIndex(img);
             foreach (Image child in canvas.Children)
                 if (top < Canvas.GetZIndex(child))
                     top = Canvas.GetZIndex(child);
             Canvas.SetZIndex(img, top + 1);
+
+            
         }
 
         private void PreviewCanvasObjectLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+
             Image img = sender as Image;
             Canvas canvas = img.Parent as Canvas;
 
@@ -112,6 +116,9 @@ namespace WpfApplication1
                 if (top > Canvas.GetZIndex(child))
                     top = Canvas.GetZIndex(child);
             Canvas.SetZIndex(img, top + 1);
+
+           
+
         }
 
         private void CanvasObjectRightClick(object sender, MouseButtonEventArgs e)
