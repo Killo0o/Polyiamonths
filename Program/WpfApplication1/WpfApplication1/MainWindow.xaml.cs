@@ -73,9 +73,14 @@ namespace WpfApplication1
             double YRound = Math.Round(yTest / 19.47);
             if (result=="tile_slim_1.png"||result=="tile_slim_4.png"||result=="line_2.png")
                 Canvas.SetLeft(bodyImage, 22.47* XRound-2+((YRound+1)%2)*11.235);
+            else if (result=="dot_white.png"||result=="dot_black.png")
+                Canvas.SetLeft(bodyImage, 22.47 * XRound - 9 + ((YRound) % 2) * 11.235);
             else
                 Canvas.SetLeft(bodyImage, 22.47 * XRound - 2 + ((YRound) % 2) * 11.235);
-            Canvas.SetTop(bodyImage, 19.47 * YRound-2);
+            if (result == "dot_white.png" || result == "dot_black.png")
+                Canvas.SetTop(bodyImage, 19.47 * YRound - 8);
+            else
+                Canvas.SetTop(bodyImage, 19.47 * YRound-2);
 
             drawingBoard.Children.Add(bodyImage);
         }
@@ -116,10 +121,15 @@ namespace WpfApplication1
             double YRound = Math.Round(yTest / 19.47);
             if (result == "tile_slim_1.png" || result == "tile_slim_4.png" || result == "line_2.png")
                 Canvas.SetLeft(img, 22.47 * XRound - 2 + ((YRound + 1) % 2) * 11.235);
+            else if (result == "dot_white.png" || result == "dot_black.png")
+                Canvas.SetLeft(img, 22.47 * XRound - 9 + ((YRound) % 2) * 11.235);
             else
                 Canvas.SetLeft(img, 22.47 * XRound - 2 + ((YRound) % 2) * 11.235);
-            Canvas.SetTop(img, 19.47 * YRound - 2);
-           
+            if (result == "dot_white.png" || result == "dot_black.png")
+                Canvas.SetTop(img, 19.47 * YRound - 8);
+            else
+                Canvas.SetTop(img, 19.47 * YRound - 2);
+
             _movingObject = null;
 
             // Put the image currently being dragged on top of the others
